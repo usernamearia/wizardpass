@@ -5,7 +5,7 @@ Generate strong, secure passwords and check the strength of existing ones with t
 ## 🌟 Features
 
 - **Password Generator**: Create strong, randomized passwords based on your criteria.
-- ***Customize password length (8-30 characters).***
+  - ***Customize password length (8-30 characters).***
 - ***Option to include numbers***
 - ***Customize password length (8-30 characters).***
 - **Responsive Design**: Accessible on desktop, tablet, and mobile devices.  
