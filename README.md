@@ -1,4 +1,4 @@
-# Password Wizard
+# Password Wizard 🔮
 
 Generate strong, secure passwords and check the strength of existing ones with the Password Wizard! This simple web application is your go-to tool for online security.
 
