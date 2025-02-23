@@ -5,14 +5,14 @@ Generate strong, secure passwords and check the strength of existing ones with t
 ## 🌟 Features
 
 - **Password Generator**: Create strong, randomized passwords based on your criteria.
-  - ***Customize password length (8-30 characters).***
-  - ***Option to include numbers.***
-  - ***Option to include symbols.***
-  - ***Utilizes cryptographically secure password generation.***
-- **Password Strength Checker**: Evaluate the robustness of any password. 
-  - ***Analyzes password strength and provides feedback.***
-  - ***Estimates password cracking time.***
-  - ***Engaging wizard-themed phrases to display strength level.***
+  - * Customize password length (8-30 characters).
+  - * Option to include numbers.
+  - * Option to include symbols.
+  - * Utilizes cryptographically secure password generation.
+- **Password Strength Checker**: Evaluate the robustness of any password.
+  - * Analyzes password strength and provides feedback.
+  - * Estimates password cracking time.
+  - * Engaging wizard-themed phrases to display strength level.
   
 
 ## 🚀 Getting Started
