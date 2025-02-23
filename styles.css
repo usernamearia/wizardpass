@@ -21,6 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center; /* Ensure text is centered by default */
+    font-size: 17px; /* Increased base font size */
 }
 
 .container {
