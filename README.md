@@ -35,9 +35,9 @@ To run this project locally:
 
 ## 🛠️ Technologies Used
 
-- **HTML**:For structuring the application's web page.  
-- **CSS**:For styling the application and ensuring a responsive layout.  
-- **JavaScript**:For implementing all interactive features, including password generation and strength checking.  
+- **HTML**: For structuring the application's web page.  
+- **CSS**: For styling the application and ensuring a responsive layout.  
+- **JavaScript**: For implementing all interactive features, including password generation and strength checking.  
 
 ## 📂 Project Structure
 
