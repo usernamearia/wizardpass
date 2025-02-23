@@ -1,0 +1,196 @@
+:root {
+    --primary-color: #ffd700;
+    --background-dark: #1a1a1a;
+    --container-bg: #333333;
+    --button-bg: #444444;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    background-color: var(--background-dark);
+    color: var(--primary-color);
+    margin: 0;
+    padding: 15px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Ensure text is centered by default */
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--container-bg);
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    /* text-align: center;  Redundant as body is already centered */
+}
+
+h1, label, button, .tab-button, #strength-result, #strength-phrases {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.tab-button {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px;
+    background: var(--button-bg);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: clamp(14px, 3vw, 16px);
+    font-family: 'Courier New', monospace; /* Added font-family and font-weight here as well for extra precaution */
+    font-weight: 700;
+}
+
+.tab-button.active {
+    background: var(--primary-color);
+    color: var(--background-dark);
+}
+
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+.form-group {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 8px; /* Added some bottom margin to labels */
+    display: block; /* Ensure labels take full width and stack properly if needed */
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+}
+
+
+input[type="text"],
+input[type="number"],
+#generated-password {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin: 10px auto;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background: #222;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace; /* Enforce font-family and font-weight on inputs */
+    font-weight: 700;
+    appearance: none;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Default subtle yellow glow */
+    transition: border-color 0.3s ease; /* Transition for border color instead of box-shadow */
+}
+
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+#generated-password:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: none; /* Remove box-shadow on focus as well */
+    border-color: var(--primary-color); /* Change border color to yellow on focus */
+}
+
+input[type="checkbox"] { /* Style for checkboxes */
+    transform: scale(1.5); /* Make checkboxes larger */
+    margin: 10px; /* Add some margin around checkboxes for spacing */
+}
+
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--button-bg);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 16px;
+    margin: 15px auto;
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+}
+
+.result {
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+}
+
+#strength-phrases {
+    margin-top: 15px;
+    font-style: italic;
+    color: #ffd700aa;
+    min-height: 60px;
+    font-family: 'Courier New', monospace; /* Keep monospace font, just italic */
+    font-weight: 700; /* Ensure it's still bold */
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--button-bg);
+    color: var(--primary-color);
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+}
+
+.notification.error { /* Style for error notifications */
+    background-color: #ff4444; /* Red background for errors */
+    color: white; /* White text for better contrast on red */
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    .tab-button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
