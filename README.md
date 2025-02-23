@@ -2,7 +2,7 @@
 
 Generate strong, secure passwords and check the strength of existing ones with the Password Wizard! This simple web application is your go-to tool for online security.
 
-https://github.com/user-attachments/assets/8870e95c-318d-40e1-ac35-e82f49691c9f
+https://github.com/user-attachments/assets/9edff56c-be86-46e8-8f0f-c6d57fd77267
 
 ## 🌟 Features
 
