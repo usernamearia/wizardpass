@@ -17,13 +17,13 @@ Generate strong, secure passwords and check the strength of existing ones with t
 
 ## 🚀 Getting Started
 
-To view the website, visit: [usernamearia.github.io](https://usernamearia.github.io)  
+To view the website, visit: [Password Wizard](https://passwordwizard.netlify.app/)  
 
 To run this project locally:
 
 1. Clone the repository:  
    ```bash
-   git clone https://passwordwizard.netlify.app/
+   git clone https://github.com/usernamearia/passwordwizard.git
    ```
 2. Navigate to the project directory:  
    ```bash
