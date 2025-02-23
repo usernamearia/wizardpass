@@ -23,7 +23,7 @@ To run this project locally:
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/usernamearia/passwordwizard.git
+   git clone https://passwordwizard.netlify.app/
    ```
 2. Navigate to the project directory:  
    ```bash
