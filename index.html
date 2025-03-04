@@ -2,46 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover, user-scalable=no">
-    <title>Password Wizard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WizardPass</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Password Wizard</h1>
-        <div class="tabs" role="tablist">
-            <button class="tab-button active" role="tab" data-tab="generator">Generator</button>
-            <button class="tab-button" role="tab" data-tab="strength">Strength Check</button>
+        <div class="logo-placeholder">
+            <img src="https://github.com/usernamearia/wizardpass/blob/main/WizardPassLogo.png?raw=true" alt="WizardPass Logo">
+            <h1>WizardPass</h1>
         </div>
 
-        <div class="tab-content active" id="generator">
-            <div class="form-group">
-                <label for="length">Password Length (8-30):</label>
-                <input type="number" id="length" min="8" max="30"  oninput="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="Enter password length">
-            </div>
-            <div class="form-group">
-                <label for="numbers">Include Numbers:</label>
-                <input type="checkbox" id="numbers" checked>
-            </div>
-            <div class="form-group">
-                <label for="symbols">Include Symbols:</label>
-                <input type="checkbox" id="symbols" checked>
-            </div>
-            <button id="generate-btn">Generate Password</button>
-            <input type="text" id="generated-password" readonly>
-            <button id="copy-btn">Copy to Clipboard</button>
+        <div class="theme-selector">
+            <label for="theme-select">Theme:</label>
+            <select id="theme-select">
+                <option value="blue">Blue</option>
+                <option value="purple">Purple</option>
+                <option value="green">Green</option>
+                <option value="orange">Orange</option>
+                <option value="red">Red</option>
+                <option value="pink">Pink</option>
+                <option value="white">White</option>
+                <option value="yellow">Yellow</option>
+            </select>
         </div>
 
-        <div class="tab-content" id="strength">
-            <div class="form-group">
-                <label for="password-input">Enter Password:</label>
-                <input type="text" id="password-input" placeholder="Enter password">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="generator">Password Generator</button>
+            <button class="tab-button" data-tab="checker">Password Checker</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Generator Tab -->
+            <div class="tab-pane active" id="generator">
+                <h2>Generate a Secure Password</h2>
+                
+                <div class="password-display">
+                    <input type="text" id="password-output" readonly>
+                    <button id="copy-button">Copy</button>
+                </div>
+                
+                <div class="password-options">
+                    <div class="option">
+                        <label for="password-length">Length: <span id="length-value">12</span></label>
+                        <input type="range" id="password-length" min="8" max="64" value="12">
+                    </div>
+                    
+                    <div class="checkbox-options">
+                        <div class="option">
+                            <input type="checkbox" id="uppercase" checked>
+                            <label for="uppercase">Uppercase Letters (A-Z)</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="checkbox" id="lowercase" checked>
+                            <label for="lowercase">Lowercase Letters (a-z)</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="checkbox" id="numbers" checked>
+                            <label for="numbers">Numbers (0-9)</label>
+                        </div>
+                        
+                        <div class="option">
+                            <input type="checkbox" id="symbols" checked>
+                            <label for="symbols">Symbols (!@#$%^&*)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="generate-button">Generate Password</button>
             </div>
-            <button id="check-strength-btn">Check Strength</button>
-            <div id="strength-result" class="result"></div>
-            <div id="strength-phrases"></div>
+
+            <!-- Checker Tab -->
+            <div class="tab-pane" id="checker">
+                <h2>Check Password Security</h2>
+                
+                <div class="password-input">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="password-check" placeholder="Enter password to check">
+                        <button id="toggle-visibility" type="button">
+                            <span class="visibility-icon">👁️</span>
+                        </button>
+                    </div>
+                    <button id="check-button">Check Password</button>
+                </div>
+                
+                <div class="results-container">
+                    <div id="results" class="hidden">
+                        <div class="result-item">
+                            <span class="result-label">Breach Status:</span>
+                            <span id="breach-status"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Times Exposed:</span>
+                            <span id="times-exposed"></span>
+                        </div>
+                    </div>
+                    <div id="loading" class="hidden">Checking...</div>
+                    <div id="validation-message" class="hidden">Please enter a password to check</div>
+                </div>
+                
+                <div class="security-note">
+                    <p><strong>Note:</strong> Your password is never sent over the network to any server. K-anonymity is used to check if your password has been exposed in data breaches.</p>
+                </div>
+            </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
