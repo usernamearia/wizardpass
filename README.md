@@ -19,17 +19,17 @@ https://github.com/user-attachments/assets/9edff56c-be86-46e8-8f0f-c6d57fd77267
 
 ## 🚀 Getting Started
 
-To view the website, visit: [Password Wizard](https://passwordwizard.netlify.app/)  
+To view the website, visit: [WizardPass](https://wizardpass.netlify.app/)  
 
 To run this project locally:
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/usernamearia/passwordwizard.git
+   git clone https://github.com/usernamearia/wizardpass.git
    ```
 2. Navigate to the project directory:  
    ```bash
-   cd passwordwizard
+   cd wizardpass
    ```
 3. Open `index.html` in your browser to view the site locally.  
 
@@ -42,7 +42,7 @@ To run this project locally:
 ## 📂 Project Structure
 
 ```
-passwordwizard/
+wizardpass/
 ├── index.html       # Main HTML file
 ├── style.css        # CSS stylesheets for visual design
 ├── script.js        # JavaScript for application logic
