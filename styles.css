@@ -406,3 +406,21 @@ input[type="checkbox"]:checked::after {
     font-size: 14px;
     text-align: left;
 }
+
+@media (max-width: 768px) {
+    #theme-select {
+        padding: 10px 15px;
+        font-size: 16px;
+        min-width: 150px;
+    }
+
+    .theme-selector {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .theme-selector label {
+        margin-right: 0;
+        font-size: 18px;
+    }
+}
