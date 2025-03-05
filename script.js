@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const includeSymbols = symbolsCheckbox.checked;
         
         if (!includeUppercase && !includeLowercase && !includeNumbers && !includeSymbols) {
-            passwordOutput.value = 'Please select at least one character type';
+            passwordOutput.value = 'Invalid!';
             return;
         }
         
