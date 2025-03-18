@@ -1,113 +1,1004 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WizardPass</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <div class="logo-placeholder">
-            <div class="logo">WP</div>
-            <h1>WizardPass</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WizardPass - Casting passwords made easy</title>
+    <meta
+      name="description"
+      content="Generate secure, unique passwords with WizardPass. Our wizard-themed password generator helps protect your online accounts with powerful password magic."
+    />
+    <meta
+      name="keywords"
+      content="password generator, secure passwords, password security, wizard passwords, online security"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧙‍♂️</text></svg>"
+    />
+
+    <style>
+      :root {
+        --primary-color: #6a0dad;
+        --secondary-color: #8a2be2;
+        --accent-color: #ffcc00;
+        --background-color: #121212;
+        --text-color: #f0f0f0;
+        --error-color: #ff6b6b;
+        --success-color: #4caf50;
+        --info-color: #2196f3;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        min-height: 100vh;
+        background-image: radial-gradient(
+            circle at 10% 20%,
+            rgba(106, 13, 173, 0.1) 0%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 90% 60%,
+            rgba(138, 43, 226, 0.1) 0%,
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 50% 70%,
+            rgba(255, 204, 0, 0.05) 0%,
+            transparent 30%
+          );
+      }
+
+      /* Header */
+      header {
+        text-align: center;
+        padding: 2rem 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .logo {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .typewriter {
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .typewriter-text {
+        overflow: hidden;
+        white-space: nowrap;
+        font-style: italic;
+        color: var(--accent-color);
+        font-family: 'Courier New', Courier, monospace;
+        position: relative;
+        animation: typing 6s steps(30, end) infinite,
+          /* Slower typing speed */ blink-caret 0.75s step-end infinite;
+        border-right: 2px solid var(--accent-color);
+        max-width: max-content;
+        font-weight: bold;
+      }
+
+      @keyframes typing {
+        0% {
+          width: 0; /* Start with no text */
+        }
+        70% {
+          width: 100%; /* Finish typing at 70% of the animation */
+        }
+        100% {
+          width: 100%; /* Hold the text until the end */
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent; /* Blinking caret effect */
+        }
+        50% {
+          border-color: var(--accent-color);
+        }
+      }
+
+      /* Main Content */
+      main {
+        max-width: 1200px;
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      section {
+        margin-bottom: 3rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 0;
+      }
+
+      .hero-content {
+        max-width: 600px;
+      }
+
+      .hero-image {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background-color: rgba(106, 13, 173, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero-image::before {
+        content: '🧙‍♂️';
+        font-size: 150px;
+        filter: drop-shadow(0 0 10px var(--primary-color));
+      }
+
+      .hero-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at center,
+          transparent 30%,
+          var(--background-color) 100%
+        );
+        pointer-events: none;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: bold;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid var(--accent-color);
+        cursor: pointer;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+      }
+
+      .cta-button:hover,
+      .cta-button:focus {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+      }
+
+      .cta-button:active {
+        transform: translateY(0);
+      }
+
+      /* Password Generator */
+      .password-generator {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        padding: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2),
+          0 0 30px rgba(106, 13, 173, 0.1);
+        border: 1px solid rgba(138, 43, 226, 0.3);
+      }
+
+      .password-display {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+
+      #password-result {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--primary-color);
+        font-family: monospace;
+        font-size: 1.2rem;
+        color: var(--text-color);
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .copy-button {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--accent-color);
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+
+      .password-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .option-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 1px solid rgba(138, 43, 226, 0.2);
+      }
+
+      .option-group h3 {
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      .checkbox-group {
+        width: 100%;
+      }
+
+      label {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      input[type='range'] {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        accent-color: var(--accent-color);
+      }
+
+      input[type='checkbox'] {
+        margin-right: 0.5rem;
+        accent-color: var(--accent-color);
+      }
+
+      .range-value {
+        font-weight: bold;
+        color: var(--accent-color);
+      }
+
+      .password-strength {
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .strength-meter {
+        height: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        margin-top: 0.5rem;
+        overflow: hidden;
+      }
+
+      .strength-meter-fill {
+        height: 100%;
+        width: 0%;
+        transition: width 0.3s ease, background-color 0.3s ease;
+      }
+
+      /* Toast Notifications */
+      .toast-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+
+      .toast {
+        padding: 1rem;
+        margin-bottom: 10px;
+        min-width: 250px;
+        max-width: 350px;
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+      }
+
+      .toast.success {
+        background-color: var(--success-color);
+      }
+
+      .toast.error {
+        background-color: var(--error-color);
+      }
+
+      .toast.info {
+        background-color: var(--info-color);
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      /* Features Section */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .feature-card {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(138, 43, 226, 0.3);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+      }
+
+      /* FAQ Section */
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 1rem;
+      }
+
+      .faq-question {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        color: var(--accent-color);
+        padding: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .faq-answer {
+        margin-top: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        padding: 0 1rem;
+        opacity: 0;
+      }
+
+      .faq-question::after {
+        content: '+';
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.active .faq-question::after {
+        content: '-';
+        transform: rotate(180deg);
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 300px;
+        margin-top: 1rem;
+        opacity: 1;
+        padding: 0 1rem 1rem;
+      }
+
+      /* Footer */
+      footer {
+        width: 100%;
+        padding: 2rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        text-align: center;
+        margin-top: auto;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+        }
+
+        .hero-image {
+          width: 200px;
+          height: 200px;
+        }
+
+        .hero-image::before {
+          font-size: 100px;
+        }
+
+        .password-options {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Accessibility */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      /* Focus styles for accessibility */
+      a:focus,
+      button:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+      }
+
+      /* For keyboard navigation */
+      .keyboard-focus {
+        box-shadow: 0 0 0 2px var(--accent-color);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo" aria-label="WizardPass Logo">🧙‍♂️</div>
+      <h1>WizardPass</h1>
+      <div class="typewriter">
+        <span class="typewriter-text">Casting passwords made easy.</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Secure Your Digital Realm</h2>
+          <p>
+            In today's digital world, your passwords are the keys to your
+            kingdom. <strong>WizardPass</strong> helps you create powerful,
+            unique passwords that keep your accounts safe from dark forces.
+          </p>
+          <button id="scroll-to-generator" class="cta-button">
+            Cast Your Password
+          </button>
+        </div>
+        <div class="hero-image" aria-label="Wizard casting a spell"></div>
+      </section>
+
+      <section id="generator" class="password-generator">
+        <h2>Password Spellbook</h2>
+        <div class="password-display">
+          <input
+            type="text"
+            id="password-result"
+            readonly
+            aria-label="Generated Password"
+            placeholder="Your magical password will appear here"
+          />
+          <button class="copy-button" aria-label="Copy password to clipboard">
+            📋
+          </button>
         </div>
 
-        <div class="theme-selector">
-            <label for="theme-select">Theme:</label>
-            <select id="theme-select">
-                <option value="blue">Blue</option>
-                <option value="purple">Purple</option>
-                <option value="green">Green</option>
-                <option value="orange">Orange</option>
-                <option value="red">Red</option>
-                <option value="pink">Pink</option>
-                <option value="white">White</option>
-                <option value="yellow">Yellow</option>
-            </select>
+        <div class="password-strength">
+          <p>
+            Password Strength:
+            <span id="strength-text">Awaiting Enchantment</span>
+          </p>
+          <div class="strength-meter">
+            <div class="strength-meter-fill"></div>
+          </div>
         </div>
 
-        <div class="tabs">
-            <button class="tab-button active" data-tab="generator">Password Generator</button>
-            <button class="tab-button" data-tab="checker">Password Checker</button>
-        </div>
+        <div class="password-options">
+          <div class="option-group">
+            <h3>Spell Length</h3>
+            <label for="password-length"
+              >Select Length:
+              <span class="range-value" id="length-value">16</span></label
+            >
+            <input
+              type="range"
+              id="password-length"
+              min="8"
+              max="128"
+              value="16"
+              aria-label="Password length slider"
+            />
+          </div>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="generator">
-                <h2>Generate a Secure Password</h2>
-                
-                <div class="password-display">
-                    <input type="text" id="password-output" readonly>
-                    <button id="copy-button">Copy</button>
-                </div>
-                
-                <div class="password-options">
-                    <div class="option">
-                        <label for="password-length">Length: <span id="length-value">12</span></label>
-                        <input type="range" id="password-length" min="8" max="64" value="12">
-                    </div>
-                    
-                    <div class="checkbox-options">
-                        <div class="option">
-                            <input type="checkbox" id="uppercase" checked>
-                            <label for="uppercase">Uppercase Letters (A-Z)</label>
-                        </div>
-                        
-                        <div class="option">
-                            <input type="checkbox" id="lowercase" checked>
-                            <label for="lowercase">Lowercase Letters (a-z)</label>
-                        </div>
-                        
-                        <div class="option">
-                            <input type="checkbox" id="numbers" checked>
-                            <label for="numbers">Numbers (0-9)</label>
-                        </div>
-                        
-                        <div class="option">
-                            <input type="checkbox" id="symbols" checked>
-                            <label for="symbols">Symbols (!@#$%^&*)</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <button id="generate-button">Generate Password</button>
+          <div class="option-group">
+            <h3>Character Types</h3>
+            <div class="checkbox-group">
+              <label for="include-uppercase">
+                <input
+                  type="checkbox"
+                  id="include-uppercase"
+                  checked
+                  aria-label="Include uppercase letters"
+                />
+                Include Uppercas Letters
+              </label>
+
+              <label for="include-lowercase">
+                <input
+                  type="checkbox"
+                  id="include-lowercase"
+                  checked
+                  aria-label="Include lowercase letters"
+                />
+                Include Lowercase Letters
+              </label>
+
+              <label for="include-numbers">
+                <input
+                  type="checkbox"
+                  id="include-numbers"
+                  checked
+                  aria-label="Include numbers"
+                />
+                Include Numbers
+              </label>
+
+              <label for="include-symbols">
+                <input
+                  type="checkbox"
+                  id="include-symbols"
+                  checked
+                  aria-label="Include special characters"
+                />
+                Include Special Characters
+              </label>
             </div>
-
-            <div class="tab-pane" id="checker">
-                <h2>Check Password Security</h2>
-                
-                <div class="password-input">
-                    <div class="password-input-wrapper">
-                        <input type="password" id="password-check" placeholder="Enter password to check">
-                        <button id="toggle-visibility" type="button">
-                            <span class="visibility-icon">👁️</span>
-                        </button>
-                    </div>
-                    <button id="check-button">Check Password</button>
-                </div>
-                
-                <div class="results-container">
-                    <div id="results" class="hidden">
-                        <div class="result-item">
-                            <span class="result-label">Breach Status:</span>
-                            <span id="breach-status"></span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Times Exposed:</span>
-                            <span id="times-exposed"></span>
-                        </div>
-                    </div>
-                    <div id="loading" class="hidden">Checking...</div>
-                    <div id="validation-message" class="hidden">Please enter a password to check</div>
-                </div>
-                
-                <div class="security-note">
-                    <p><strong>Note:</strong> Your password is never sent over the network to any server. K-anonymity is used to check if your password has been exposed in data breaches.</p>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
 
-    <script src="script.js"></script>
-</body>
+        <button id="generate-password" class="cta-button">Cast Spell</button>
+
+        <div id="pwned-check" class="pwned-check" style="margin-top: 1rem">
+          <button
+            id="check-pwned"
+            class="cta-button"
+            style="background-color: var(--info-color)"
+          >
+            Check if Password Has Been Breached
+          </button>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Powerful Protection</h3>
+          <p>
+            Our password generator creates truly random, highly secure passwords
+            that protect your accounts from hackers and dark wizards.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Breach Detection</h3>
+          <p>
+            Check if your password has been exposed in known data breaches with
+            our integration to the Have I Been Pwned API.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Magic</h3>
+          <p>
+            Generate secure passwords instantly with our magical algorithm,
+            customized to your specific requirements.
+          </p>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question" tabindex="0">
+              What makes a password secure?
+            </div>
+            <div class="faq-answer">
+              <p>
+                A secure password should be long (at least 12 characters),
+                include a mix of uppercase and lowercase letters, numbers, and
+                special characters, and be unique for each account. Avoid using
+                personal information or common words.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" tabindex="0">
+              How does the breach check work?
+            </div>
+            <div class="faq-answer">
+              <p>
+                We use the Have I Been Pwned API which checks if your password
+                has appeared in known data breaches. We only send a partial hash
+                of your password, so your full password never leaves your
+                device.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" tabindex="0">
+              How can I remember complex passwords?
+            </div>
+            <div class="faq-answer">
+              <p>
+                We recommend using a password manager to securely store your
+                complex passwords. This way, you only need to remember one
+                master password while maintaining unique, strong passwords for
+                all your accounts.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" tabindex="0">
+              Is WizardPass free to use?
+            </div>
+            <div class="faq-answer">
+              <p>
+                Yes! WizardPass is completely free to use. We believe everyone
+                deserves access to strong password security.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Created by wizards for muggles.</p>
+    </footer>
+
+    <div class="toast-container" aria-live="polite"></div>
+
+    <script>
+      // Element references
+      const passwordResult = document.getElementById('password-result');
+      const passwordLength = document.getElementById('password-length');
+      const lengthValue = document.getElementById('length-value');
+      const includeUppercase = document.getElementById('include-uppercase');
+      const includeLowercase = document.getElementById('include-lowercase');
+      const includeNumbers = document.getElementById('include-numbers');
+      const includeSymbols = document.getElementById('include-symbols');
+      const generateButton = document.getElementById('generate-password');
+      const copyButton = document.querySelector('.copy-button');
+      const strengthMeter = document.querySelector('.strength-meter-fill');
+      const strengthText = document.getElementById('strength-text');
+      const scrollToGenerator = document.getElementById('scroll-to-generator');
+      const checkPwnedButton = document.getElementById('check-pwned');
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      // Password generation
+      generateButton.addEventListener('click', generatePassword);
+
+      // Update length value display
+      passwordLength.addEventListener('input', () => {
+        lengthValue.textContent = passwordLength.value;
+      });
+
+      // Scroll to generator section
+      scrollToGenerator.addEventListener('click', () => {
+        document
+          .getElementById('generator')
+          .scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Copy password to clipboard
+      copyButton.addEventListener('click', async () => {
+        if (!passwordResult.value) {
+          showToast('No password to copy!', 'info');
+          return;
+        }
+
+        try {
+          await navigator.clipboard.writeText(passwordResult.value);
+          showToast('Password copied to clipboard!', 'success');
+        } catch (err) {
+          showToast('Failed to copy password.', 'error');
+        }
+      });
+
+      // Check if password has been pwned
+      checkPwnedButton.addEventListener('click', async () => {
+        if (!passwordResult.value) {
+          showToast('Generate a password first!', 'info');
+          return;
+        }
+
+        try {
+          const password = passwordResult.value;
+          const hash = await sha1(password);
+          const prefix = hash.substring(0, 5).toUpperCase();
+          const suffix = hash.substring(5).toUpperCase();
+
+          const response = await fetch(
+            `https://api.pwnedpasswords.com/range/${prefix}`
+          );
+          if (!response.ok) {
+            throw new Error('Failed to check password');
+          }
+
+          const data = await response.text();
+          const breachData = data.split('\n').map((line) => line.split(':'));
+          const found = breachData.find(
+            ([hashSuffix]) => hashSuffix === suffix
+          );
+
+          if (found) {
+            const [, count] = found;
+            showToast(
+              `This password has been found in ${count} data breaches! Please generate a new one.`,
+              'error'
+            );
+          } else {
+            showToast(
+              "Good news! This password hasn't been found in any known data breaches.",
+              'success'
+            );
+          }
+        } catch (err) {
+          showToast(
+            'Failed to check password against breach database.',
+            'error'
+          );
+        }
+      });
+
+      // Password generation function
+      function generatePassword() {
+        const length = parseInt(passwordLength.value);
+        const hasUppercase = includeUppercase.checked;
+        const hasLowercase = includeLowercase.checked;
+        const hasNumbers = includeNumbers.checked;
+        const hasSymbols = includeSymbols.checked;
+
+        // Validate at least one character set is selected
+        if (!hasUppercase && !hasLowercase && !hasNumbers && !hasSymbols) {
+          showToast('Please select at least one character type!', 'error');
+          return;
+        }
+
+        // Character sets
+        const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+        const numbers = '0123456789';
+        const symbols = '!@#$%^&*()_-+=<>?/.,:;{}[]|~';
+
+        let chars = '';
+        if (hasUppercase) chars += uppercase;
+        if (hasLowercase) chars += lowercase;
+        if (hasNumbers) chars += numbers;
+        if (hasSymbols) chars += symbols;
+
+        // Generate password
+        let password = '';
+        let meetsRequirements = false;
+
+        while (!meetsRequirements) {
+          password = '';
+          for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            password += chars[randomIndex];
+          }
+
+          // Check if password meets requirements
+          meetsRequirements =
+            (!hasUppercase || /[A-Z]/.test(password)) &&
+            (!hasLowercase || /[a-z]/.test(password)) &&
+            (!hasNumbers || /[0-9]/.test(password)) &&
+            (!hasSymbols || /[!@#$%^&*()_\-+=<>?/.,:;{}[\]|~]/.test(password));
+        }
+
+        // Update password display
+        passwordResult.value = password;
+
+        // Update strength meter
+        updateStrengthMeter(password);
+
+        // Magical animation
+        passwordResult.classList.add('magical-appear');
+        setTimeout(() => {
+          passwordResult.classList.remove('magical-appear');
+        }, 500);
+
+        showToast('Password successfully generated!', 'success');
+      }
+
+      // Update password strength meter
+      function updateStrengthMeter(password) {
+        let strength = 0;
+
+        // Length contribution (up to 40%)
+        const lengthScore = Math.min(password.length / 32, 1) * 40;
+        strength += lengthScore;
+
+        // Character diversity (up to 60%)
+        if (/[A-Z]/.test(password)) strength += 15;
+        if (/[a-z]/.test(password)) strength += 15;
+        if (/[0-9]/.test(password)) strength += 15;
+        if (/[^A-Za-z0-9]/.test(password)) strength += 15;
+
+        // Update the meter
+        strengthMeter.style.width = `${strength}%`;
+
+        // Color based on strength
+        if (strength < 25) {
+          strengthMeter.style.backgroundColor = '#ff4d4d'; // Red
+          strengthText.textContent = 'Weak Spell';
+        } else if (strength < 50) {
+          strengthMeter.style.backgroundColor = '#ffad4d'; // Orange
+          strengthText.textContent = 'Moderate Spell';
+        } else if (strength < 75) {
+          strengthMeter.style.backgroundColor = '#ffff4d'; // Yellow
+          strengthText.textContent = 'Strong Spell';
+        } else {
+          strengthMeter.style.backgroundColor = '#4dff4d'; // Green
+          strengthText.textContent = 'Powerful Enchantment';
+        }
+      }
+
+      // Toast notification function
+      function showToast(message, type = 'info') {
+        const toastContainer = document.querySelector('.toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+
+        toastContainer.appendChild(toast);
+
+        // Remove toast after animation
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      }
+
+      // SHA-1 hashing function for HIBP API
+      async function sha1(str) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(str);
+        const hashBuffer = await crypto.subtle.digest('SHA-1', data);
+
+        return Array.from(new Uint8Array(hashBuffer))
+          .map((b) => b.toString(16).padStart(2, '0'))
+          .join('');
+      }
+
+      // FAQ accordion functionality
+      faqItems.forEach((item) => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          // Check if this item is already active
+          const isActive = item.classList.contains('active');
+
+          // Close all FAQ items
+          faqItems.forEach((faq) => {
+            faq.classList.remove('active');
+          });
+
+          // If the clicked item wasn't active before, open it
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+
+        // Keyboard accessibility
+        question.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            question.click();
+          }
+        });
+      });
+
+      // Keyboard navigation enhancement
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          document.body.classList.add('keyboard-user');
+        }
+      });
+
+      document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-user');
+      });
+
+      // Initialize with a random password
+      generatePassword();
+    </script>
+  </body>
 </html>
