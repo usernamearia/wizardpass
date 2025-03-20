@@ -772,11 +772,16 @@
         lengthValue.textContent = passwordLength.value;
       });
 
-      // Scroll to generator section
       scrollToGenerator.addEventListener('click', () => {
-        document
-          .getElementById('generator')
-          .scrollIntoView({ behavior: 'smooth' });
+        const generatorSection = document.getElementById('generator');
+        const offset = 50; // Adjust value if need be
+        const elementPosition = generatorSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
       });
 
       // Copy password to clipboard
