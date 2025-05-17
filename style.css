@@ -1,12 +1,24 @@
 :root {
-  --primary-color: #6a0dad;
-  --secondary-color: #8a2be2;
-  --accent-color: #ffcc00;
-  --background-color: #121212;
-  --text-color: #f0f0f0;
-  --error-color: #ff6b6b;
-  --success-color: #4caf50;
-  --info-color: #2196f3;
+  --primary-color: #222f5b; /* Ravenclaw Deep Blue */
+  --secondary-color: #3a4a7e; /* Lighter Blue for hovers/accents */
+  --accent-color: #946b2d; /* Ravenclaw Bronze */
+  --background-color: #0d1117; /* Very Dark Desaturated Blue (almost black) */
+  --text-color: #c0c0c0; /* Silver/Light Grey for text */
+  --error-color: #b00020; /* A standard deep red for errors */
+  --success-color: #388e3c; /* A more muted, fitting green */
+  --info-color: #507091; /* Muted Blue/Grey for info messages */
+
+  /* New gradient variables for Ravenclaw theme */
+  --ravenclaw-gradient-primary: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  --ravenclaw-gradient-accent: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    color-mix(in srgb, var(--accent-color) 70%, #fff 30%) 100%
+  ); /* Bronze to a lighter bronze */
 }
 
 * {
@@ -16,48 +28,54 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Georgia', 'Times New Roman', Times, serif; /* More classic/scholarly font */
   background-color: var(--background-color);
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.7; /* Slightly increased for readability with serif */
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
   min-height: 100vh;
   background-image: radial-gradient(
-      circle at 10% 20%,
-      rgba(106, 13, 173, 0.1) 0%,
-      transparent 20%
+      circle at 15% 25%,
+      rgba(34, 47, 91, 0.15) 0%,
+      /* var(--primary-color) with alpha */ transparent 30%
     ),
     radial-gradient(
-      circle at 90% 60%,
-      rgba(138, 43, 226, 0.1) 0%,
-      transparent 25%
+      circle at 85% 75%,
+      rgba(148, 107, 45, 0.1) 0%,
+      /* var(--accent-color) with alpha */ transparent 30%
     ),
     radial-gradient(
-      circle at 50% 70%,
-      rgba(255, 204, 0, 0.05) 0%,
-      transparent 30%
-    );
+      circle at 50% 50%,
+      rgba(13, 17, 23, 0.05) 0%,
+      /* var(--background-color) slightly lighter */ transparent 40%
+    ),
+    var(--ravenclaw-gradient-primary); /* Base gradient */
+  background-attachment: fixed; /* Keep gradient fixed during scroll */
 }
 
 /* Header */
 header {
   text-align: center;
-  padding: 2rem 0;
+  padding: 2.5rem 1rem; /* Increased padding */
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(13, 17, 23, 0.5); /* Darker, semi-transparent bg */
   position: relative;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--accent-color) 30%, transparent); /* Subtle bronze line */
 }
 
 .logo {
-  font-size: 2.5rem;
+  font-size: 3rem; /* Slightly larger */
   margin-bottom: 0.5rem;
+  color: var(--accent-color); /* Bronze logo */
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent-color) 50%, transparent);
 }
 
 .typewriter {
-  height: 2rem;
+  height: 2.2rem; /* Adjusted height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,32 +86,33 @@ header {
   overflow: hidden;
   white-space: nowrap;
   font-style: italic;
-  color: var(--accent-color);
+  color: var(--accent-color); /* Bronze typewriter text */
   font-family: 'Courier New', Courier, monospace;
   position: relative;
   animation: typing 6s steps(30, end) infinite,
-    /* Slower typing speed */ blink-caret 0.75s step-end infinite;
+    blink-caret 0.75s step-end infinite;
   border-right: 2px solid var(--accent-color);
   max-width: max-content;
   font-weight: bold;
+  font-size: 1.1rem; /* Slightly larger */
 }
 
 @keyframes typing {
   0% {
-    width: 0; /* Start with no text */
+    width: 0;
   }
   70% {
-    width: 100%; /* Finish typing at 70% of the animation */
+    width: 100%;
   }
   100% {
-    width: 100%; /* Hold the text until the end */
+    width: 100%;
   }
 }
 
 @keyframes blink-caret {
   from,
   to {
-    border-color: transparent; /* Blinking caret effect */
+    border-color: transparent;
   }
   50% {
     border-color: var(--accent-color);
@@ -109,7 +128,7 @@ main {
 }
 
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem; /* Increased spacing */
 }
 
 h1,
@@ -119,16 +138,23 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-  margin-bottom: 1rem;
-  color: var(--accent-color);
+  margin-bottom: 1.2rem; /* Increased spacing */
+  color: var(--accent-color); /* Bronze headings */
+  font-family: 'Georgia', 'Times New Roman', serif; /* Consistent heading font */
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem; /* Slightly larger */
+  color: var(--text-color); /* Main H1 can be lighter for contrast */
+}
+
+h1 .logo + span {
+  /* If h1 is directly after logo, make it bronze */
+  color: var(--accent-color);
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 2.2rem; /* Slightly larger */
 }
 
 /* Hero Section */
@@ -136,30 +162,40 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem; /* Increased gap */
   padding: 2rem 0;
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 650px; /* Slightly wider */
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: var(--text-color);
 }
 
 .hero-image {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 280px; /* Adjusted size */
+  height: 280px;
   border-radius: 50%;
-  background-color: rgba(106, 13, 173, 0.1);
+  background: var(
+    --ravenclaw-gradient-primary
+  ); /* Gradient background for hero image area */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border: 3px solid var(--accent-color); /* Bronze border */
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 40%, transparent);
 }
 
 .hero-image::before {
-  content: '🧙‍♂️';
-  font-size: 150px;
-  filter: drop-shadow(0 0 10px var(--primary-color));
+  content: '🦅'; /* Eagle for Ravenclaw */
+  font-size: 130px; /* Adjusted size */
+  filter: drop-shadow(0 0 10px var(--accent-color));
+  color: color-mix(in srgb, var(--accent-color) 80%, #fff 20%);
 }
 
 .hero-image::after {
@@ -171,47 +207,54 @@ h2 {
   bottom: 0;
   background: radial-gradient(
     circle at center,
-    transparent 30%,
-    var(--background-color) 100%
+    transparent 40%,
+    color-mix(in srgb, var(--background-color) 80%, transparent) 100%
   );
   pointer-events: none;
 }
 
 .cta-button {
   display: inline-block;
-  background-color: var(--primary-color);
-  color: white;
+  background: var(--ravenclaw-gradient-accent); /* Bronze gradient button */
+  color: var(--background-color); /* Dark text on bronze button */
   font-weight: bold;
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  padding: 1.1rem 2.2rem; /* Slightly larger padding */
+  border-radius: 8px; /* Less rounded, more formal */
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 2px solid var(--accent-color);
+  border: none; /* Removed border, relying on gradient */
   cursor: pointer;
-  font-size: 1.1rem;
-  margin-top: 1rem;
+  font-size: 1.15rem; /* Slightly larger */
+  margin-top: 1.5rem; /* Increased margin */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 color-mix(in srgb, var(--accent-color) 80%, #fff 50%);
 }
 
 .cta-button:hover,
 .cta-button:focus {
-  background-color: var(--secondary-color);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+  background: var(--ravenclaw-gradient-accent);
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 color-mix(in srgb, var(--accent-color) 80%, #fff 60%);
 }
 
 .cta-button:active {
   transform: translateY(0);
+  filter: brightness(0.95);
 }
 
 /* Password Generator */
 .password-generator {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-  padding: 2rem;
+  background-color: rgba(13, 17, 23, 0.6); /* Darker, more opaque */
+  border-radius: 10px;
+  padding: 2.5rem; /* Increased padding */
   max-width: 800px;
   margin: 0 auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 30px rgba(106, 13, 173, 0.1);
-  border: 1px solid rgba(138, 43, 226, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3),
+    0 0 40px color-mix(in srgb, var(--primary-color) 20%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--primary-color) 50%, var(--accent-color) 30%);
 }
 
 .password-display {
@@ -221,34 +264,44 @@ h2 {
 
 #password-result {
   width: 100%;
-  padding: 1rem;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.2rem; /* Increased padding */
+  border-radius: 6px;
+  background-color: color-mix(
+    in srgb,
+    var(--background-color) 50%,
+    var(--primary-color) 20%
+  );
   border: 1px solid var(--primary-color);
-  font-family: monospace;
-  font-size: 1.2rem;
+  font-family: 'Consolas', 'Lucida Console', monospace; /* More techy font */
+  font-size: 1.3rem; /* Larger for readability */
   color: var(--text-color);
   text-align: center;
   margin-bottom: 0.5rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .copy-button {
   position: absolute;
-  right: 10px;
+  right: 12px; /* Adjusted position */
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   color: var(--accent-color);
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* Larger icon */
+  transition: color 0.2s ease;
+}
+
+.copy-button:hover {
+  color: color-mix(in srgb, var(--accent-color) 80%, #fff 20%);
 }
 
 .password-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
+  gap: 2.5rem; /* Increased gap */
+  margin-bottom: 2rem; /* Increased margin */
 }
 
 .option-group {
@@ -256,16 +309,16 @@ h2 {
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid rgba(138, 43, 226, 0.2);
+  background-color: rgba(34, 47, 91, 0.1); /* var(--primary-color) with alpha */
+  padding: 1.8rem; /* Increased padding */
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--primary-color) 40%, transparent);
 }
 
 .option-group h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   color: var(--accent-color);
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Slightly larger */
   width: 100%;
   text-align: center;
 }
@@ -275,87 +328,125 @@ h2 {
 }
 
 label {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
+  margin-bottom: 0.8rem; /* Increased margin */
+  font-weight: normal; /* Less bold */
   display: flex;
   align-items: center;
+  color: var(--text-color);
+  font-size: 0.95rem;
 }
 
 input[type='range'] {
   width: 100%;
   margin-bottom: 0.5rem;
-  accent-color: var(--accent-color);
+  accent-color: var(--accent-color); /* Bronze slider */
+  cursor: pointer;
 }
 
 input[type='checkbox'] {
-  margin-right: 0.5rem;
-  accent-color: var(--accent-color);
+  margin-right: 0.8rem; /* Increased spacing */
+  accent-color: var(--accent-color); /* Bronze checkbox */
+  width: 18px; /* Larger checkbox */
+  height: 18px;
+  cursor: pointer;
 }
 
 .range-value {
   font-weight: bold;
   color: var(--accent-color);
+  margin-left: 0.5em;
 }
 
 .password-strength {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   text-align: center;
+}
+.password-strength p {
+  color: var(--text-color);
 }
 
 .strength-meter {
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  margin-top: 0.5rem;
+  height: 12px; /* Slightly thicker */
+  background-color: color-mix(
+    in srgb,
+    var(--primary-color) 30%,
+    var(--background-color) 70%
+  );
+  border-radius: 6px;
+  margin-top: 0.8rem;
   overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary-color) 50%, transparent);
 }
 
 .strength-meter-fill {
   height: 100%;
   width: 0%;
-  transition: width 0.3s ease, background-color 0.3s ease;
+  transition: width 0.4s ease, background-color 0.4s ease;
+  border-radius: 5px; /* Match outer radius */
 }
 
 /* Toast Notifications */
 .toast-container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 25px; /* Adjusted position */
+  right: 25px;
   z-index: 1000;
 }
 
 .toast {
-  padding: 1rem;
-  margin-bottom: 10px;
-  min-width: 250px;
-  max-width: 350px;
-  color: white;
-  border-radius: 5px;
+  padding: 1.2rem; /* Increased padding */
+  margin-bottom: 12px; /* Increased margin */
+  min-width: 280px; /* Adjusted width */
+  max-width: 380px;
+  color: var(--text-color); /* Ensure text color is readable */
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: slideInRight 0.4s ease, fadeOut 0.4s ease 3.7s forwards; /* Slower fade */
+  font-size: 0.95rem;
+  border-left: 4px solid; /* Add a colored left border */
 }
 
 .toast.success {
-  background-color: var(--success-color);
+  background-color: color-mix(
+    in srgb,
+    var(--success-color) 25%,
+    var(--background-color) 75%
+  );
+  border-left-color: var(--success-color);
+  color: color-mix(in srgb, var(--text-color) 80%, var(--success-color) 20%);
 }
 
 .toast.error {
-  background-color: var(--error-color);
+  background-color: color-mix(
+    in srgb,
+    var(--error-color) 25%,
+    var(--background-color) 75%
+  );
+  border-left-color: var(--error-color);
+  color: color-mix(in srgb, var(--text-color) 80%, var(--error-color) 20%);
 }
 
 .toast.info {
-  background-color: var(--info-color);
+  background-color: color-mix(
+    in srgb,
+    var(--info-color) 25%,
+    var(--background-color) 75%
+  );
+  border-left-color: var(--info-color);
+  color: color-mix(in srgb, var(--text-color) 80%, var(--info-color) 20%);
 }
 
 @keyframes slideInRight {
   from {
-    transform: translateX(100%);
+    transform: translateX(110%);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -365,6 +456,7 @@ input[type='checkbox'] {
   }
   to {
     opacity: 0;
+    transform: translateX(20px); /* Slight move on fade */
   }
 }
 
@@ -372,27 +464,42 @@ input[type='checkbox'] {
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 2.5rem; /* Increased gap */
+  margin-top: 3.5rem; /* Increased margin */
 }
 
 .feature-card {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(
+    34,
+    47,
+    91,
+    0.15
+  ); /* var(--primary-color) with alpha */
   border-radius: 10px;
-  padding: 1.5rem;
+  padding: 2rem; /* Increased padding */
   text-align: center;
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(138, 43, 226, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid color-mix(in srgb, var(--primary-color) 50%, transparent);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px
+    color-mix(in srgb, var(--primary-color) 10%, rgba(0, 0, 0, 0.2));
 }
 
 .feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.5rem; /* Larger icon */
+  margin-bottom: 1.2rem;
   color: var(--accent-color);
+}
+.feature-card h3 {
+  font-size: 1.4rem;
+}
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--text-color);
 }
 
 /* FAQ Section */
@@ -402,9 +509,13 @@ input[type='checkbox'] {
 }
 
 .faq-item {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 1rem;
+  margin-bottom: 1.2rem; /* Increased margin */
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--primary-color) 30%, transparent);
+  padding-bottom: 1.2rem;
+}
+.faq-item:last-child {
+  border-bottom: none;
 }
 
 .faq-question {
@@ -412,50 +523,75 @@ input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
+  font-weight: bold; /* Kept bold for questions */
   color: var(--accent-color);
-  padding: 1rem;
+  padding: 1.2rem 0.5rem; /* Adjusted padding */
   transition: all 0.3s ease;
+  font-size: 1.15rem;
+}
+.faq-question:hover {
+  color: color-mix(in srgb, var(--accent-color) 80%, #fff 20%);
 }
 
 .faq-answer {
   margin-top: 0;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.5s ease;
-  padding: 0 1rem;
+  transition: all 0.5s ease-in-out; /* Smoother transition */
+  padding: 0 1.2rem;
   opacity: 0;
+  font-size: 1rem;
+  color: var(--text-color);
 }
 
 .faq-question::after {
   content: '+';
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
+  font-size: 1.8rem; /* Larger icon */
+  transition: transform 0.4s ease, color 0.3s ease; /* Added color transition */
+  font-family: 'Georgia', serif; /* Consistent with symbol font */
 }
 
 .faq-item.active .faq-question::after {
-  content: '-';
-  transform: rotate(180deg);
+  content: '−'; /* Using minus instead of rotating plus */
+  transform: rotate(0deg); /* No rotation needed */
 }
 
 .faq-item.active .faq-answer {
-  max-height: 300px;
+  max-height: 400px; /* Increased max height */
   margin-top: 1rem;
   opacity: 1;
-  padding: 0 1rem 1rem;
+  padding: 0 1.2rem 1.2rem;
 }
 
 /* Footer */
 footer {
   width: 100%;
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2.5rem; /* Increased padding */
+  background-color: rgba(13, 17, 23, 0.5); /* Darker footer bg */
   text-align: center;
   margin-top: auto;
+  border-top: 1px solid color-mix(in srgb, var(--accent-color) 30%, transparent); /* Subtle bronze line */
+  font-size: 0.9rem;
+  color: var(--text-color);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  body {
+    font-size: 15px; /* Base font size for mobile */
+  }
+  header {
+    padding: 2rem 1rem;
+  }
+  .logo {
+    font-size: 2.5rem;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
   .hero {
     flex-direction: column;
   }
@@ -471,6 +607,14 @@ footer {
 
   .password-options {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .cta-button {
+    padding: 1rem 1.8rem;
+    font-size: 1.05rem;
+  }
+  .features {
+    grid-template-columns: 1fr; /* Stack features on mobile */
   }
 }
 
@@ -493,11 +637,15 @@ button:focus,
 input:focus,
 select:focus,
 textarea:focus {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
+  outline: 3px solid var(--accent-color); /* Thicker, more prominent outline */
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 50%, transparent); /* Subtle glow for some elements */
 }
 
-/* For keyboard navigation */
-.keyboard-focus {
-  box-shadow: 0 0 0 2px var(--accent-color);
+/* For keyboard navigation body class */
+body.keyboard-user *:focus {
+  /* Apply more visible focus when keyboard is used */
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
 }
+/* Remove the .keyboard-focus class as we now use a body class approach */
