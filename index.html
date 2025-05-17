@@ -12,12 +12,10 @@
       name="keywords"
       content="password generator, secure passwords, password security, wizard passwords, online security"
     />
-
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧙‍♂️</text></svg>"
     />
-
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -38,141 +36,118 @@
             kingdom. <strong>WizardPass</strong> helps you create powerful,
             unique passwords that keep your accounts safe from dark forces.
           </p>
-          <button id="scroll-to-generator" class="cta-button">
+          <button id="toggle-generator" class="cta-button">
             Cast Your Password
           </button>
         </div>
         <div class="hero-image" aria-label="Wizard casting a spell"></div>
       </section>
 
-      <section id="generator" class="password-generator">
-        <h2>Password Spellbook</h2>
-        <div class="password-display">
-          <input
-            type="text"
-            id="password-result"
-            readonly
-            aria-label="Generated Password"
-            placeholder="Brewing..."
-          />
-          <button class="copy-button" aria-label="Copy password to clipboard">
-            📋
-          </button>
-        </div>
-
-        <div class="password-strength">
-          <p>
-            Password Strength:
-            <span id="strength-text">Awaiting Enchantment</span>
-          </p>
-          <div class="strength-meter">
-            <div class="strength-meter-fill"></div>
-          </div>
-        </div>
-
-        <div class="password-options">
-          <div class="option-group">
-            <h3>Spell Length</h3>
-            <label for="password-length"
-              >Select Length:
-              <span class="range-value" id="length-value">16</span></label
-            >
+      <section
+        id="generator-wrapper"
+        class="generator-toggle hidden"
+        aria-hidden="true"
+      >
+        <section id="generator" class="password-generator">
+          <h2>Password Spellbook</h2>
+          <div class="password-display">
             <input
-              type="range"
-              id="password-length"
-              min="8"
-              max="128"
-              value="16"
-              aria-label="Password length slider"
+              type="text"
+              id="password-result"
+              readonly
+              aria-label="Generated Password"
+              placeholder="Brewing..."
             />
+            <button class="copy-button" aria-label="Copy password to clipboard">
+              📋
+            </button>
           </div>
 
-          <div class="option-group">
-            <h3>Character Types</h3>
-            <div class="checkbox-group">
-              <label for="include-uppercase">
-                <input
-                  type="checkbox"
-                  id="include-uppercase"
-                  checked
-                  aria-label="Include uppercase letters"
-                />
-                Include Uppercase Letters
-              </label>
-
-              <label for="include-lowercase">
-                <input
-                  type="checkbox"
-                  id="include-lowercase"
-                  checked
-                  aria-label="Include lowercase letters"
-                />
-                Include Lowercase Letters
-              </label>
-
-              <label for="include-numbers">
-                <input
-                  type="checkbox"
-                  id="include-numbers"
-                  checked
-                  aria-label="Include numbers"
-                />
-                Include Numbers
-              </label>
-
-              <label for="include-symbols">
-                <input
-                  type="checkbox"
-                  id="include-symbols"
-                  checked
-                  aria-label="Include special characters"
-                />
-                Include Special Characters
-              </label>
+          <div class="password-strength">
+            <p>
+              Password Strength:
+              <span id="strength-text">Awaiting Enchantment</span>
+            </p>
+            <div class="strength-meter">
+              <div class="strength-meter-fill"></div>
             </div>
           </div>
-        </div>
 
-        <button id="generate-password" class="cta-button">Cast Spell</button>
+          <div class="password-options">
+            <div class="option-group">
+              <h3>Spell Length</h3>
+              <label for="password-length"
+                >Select Length:
+                <span class="range-value" id="length-value">16</span></label
+              >
+              <input
+                type="range"
+                id="password-length"
+                min="8"
+                max="128"
+                value="16"
+                aria-label="Password length slider"
+              />
+            </div>
 
-        <div id="pwned-check" class="pwned-check" style="margin-top: 1rem">
-          <button
-            id="check-pwned"
-            class="cta-button"
-            style="background-color: var(--info-color)"
-          >
-            Check if Password Has Been Breached
-          </button>
-        </div>
-      </section>
+            <div class="option-group">
+              <h3>Character Types</h3>
+              <div class="checkbox-group">
+                <label for="include-uppercase">
+                  <input
+                    type="checkbox"
+                    id="include-uppercase"
+                    checked
+                    aria-label="Include uppercase letters"
+                  />
+                  Include Uppercase Letters
+                </label>
 
-      <section class="features">
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h3>Powerful Protection</h3>
-          <p>
-            Our password generator creates truly random, highly secure passwords
-            that protect your accounts from hackers and dark wizards.
-          </p>
-        </div>
+                <label for="include-lowercase">
+                  <input
+                    type="checkbox"
+                    id="include-lowercase"
+                    checked
+                    aria-label="Include lowercase letters"
+                  />
+                  Include Lowercase Letters
+                </label>
 
-        <div class="feature-card">
-          <div class="feature-icon">🔍</div>
-          <h3>Breach Detection</h3>
-          <p>
-            Check if your password has been exposed in known data breaches with
-            our integration to the Have I Been Pwned API.
-          </p>
-        </div>
+                <label for="include-numbers">
+                  <input
+                    type="checkbox"
+                    id="include-numbers"
+                    checked
+                    aria-label="Include numbers"
+                  />
+                  Include Numbers
+                </label>
 
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Instant Magic</h3>
-          <p>
-            Generate secure passwords instantly with our magical algorithm,
-            customized to your specific requirements.
-          </p>
-        </div>
+                <label for="include-symbols">
+                  <input
+                    type="checkbox"
+                    id="include-symbols"
+                    checked
+                    aria-label="Include special characters"
+                  />
+                  Include Special Characters
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button id="generate-password" class="cta-button">Cast Spell</button>
+
+          <div id="pwned-check" class="pwned-check" style="margin-top: 1rem">
+            <button
+              id="check-pwned"
+              class="cta-button"
+              style="background-color: var(--info-color)"
+            >
+              Check if Password Has Been Breached
+            </button>
+          </div>
+        </section>
       </section>
 
       <section class="faq-section">

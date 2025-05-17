@@ -346,3 +346,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   generatePassword();
 });
+
+// Toggle generator section visibility
+const toggleButton = document.getElementById('toggle-generator');
+const generatorWrapper = document.getElementById('generator-wrapper');
+
+if (toggleButton && generatorWrapper) {
+  toggleButton.addEventListener('click', () => {
+    const isVisible = generatorWrapper.classList.contains('visible');
+
+    if (isVisible) {
+      generatorWrapper.classList.remove('visible');
+      generatorWrapper.setAttribute('aria-hidden', 'true');
+    } else {
+      generatorWrapper.classList.add('visible');
+      generatorWrapper.setAttribute('aria-hidden', 'false');
+
+      // Optionally scroll to it
+      const yOffset = -60;
+      const y =
+        generatorWrapper.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+      setTimeout(() => {
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }, 250);
+    }
+  });
+}

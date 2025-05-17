@@ -649,3 +649,19 @@ body.keyboard-user *:focus {
   outline-offset: 2px;
 }
 /* Remove the .keyboard-focus class as we now use a body class approach */
+
+.generator-toggle {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.generator-toggle.visible {
+  max-height: 3000px;
+  opacity: 1;
+}
+
+.hidden {
+  display: block;
+}
